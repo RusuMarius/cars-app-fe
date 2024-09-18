@@ -44,7 +44,7 @@ const PopularCarousel = ({ products, shoes }: any) => {
         {filteredItems.map((item: any) => {
           const image = item.attributes.image?.data?.[0]?.attributes?.url;
           const imageShoes = item.attributes.image.data.attributes?.url
-          const imageURL = image ? `http://127.0.0.1:1337${image}` : `http://127.0.0.1:1337${imageShoes}`; // Provide a fallback image URL
+          const imageURL = image ? `https://cars-app-cfm9.onrender.com${image}` : `https://cars-app-cfm9.onrender.com${imageShoes}`; // Provide a fallback image URL
           return (
             <SwiperSlide key={`${item.type}-${item.id}`}>
               <div className="product-carousel-item text-center">

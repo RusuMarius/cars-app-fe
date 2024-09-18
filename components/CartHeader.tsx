@@ -5,7 +5,7 @@ import { getCartData } from '@/app/api/getData';
 
 const CartHeader = async ({ user }: { user: any }) => {
   const cartProducts = await getCartData();
-
+console.log(cartProducts);
   let userCartProducts = [];
 
   if (user && user.email) {
