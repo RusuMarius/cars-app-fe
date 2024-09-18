@@ -1,5 +1,4 @@
 import {LoginLink} from "@kinde-oss/kinde-auth-nextjs/components";
-import email from "./AuthEmail";
 import styles from '../app/page.module.css'
 import { useState } from "react";
 
