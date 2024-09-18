@@ -17,6 +17,11 @@ const CarsList = ({ initialCars, totalCars }: { initialCars: any; totalCars: num
     const nextPage = page + 1;
     const newCars = await getCars(nextPage);
 
+    if (!newCars || !newCars.data) {
+      setLoading(false);
+      return;
+    }
+
     setCarItems((prevCars: any) => [...prevCars, ...newCars.data]);
     setPage(nextPage);
     setHasMore(carItems.length + newCars.data.length < totalCars);
