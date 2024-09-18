@@ -32,10 +32,21 @@ export const getProducts = async () => {
   const res = await fetch(`https://cars-app-cfm9.onrender.com/api/products?populate=*`, {
     next: {
       revalidate: 0,
-    }
-  })
-  return await res.json()
-}
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch products');
+  }
+
+  const data = await res.json();
+  if (!data) {
+    console.error('No products data returned');
+    return { data: [], meta: { pagination: { total: 0 } } };
+  }
+
+  return data;
+};
 
 export const getCars = async (page: number) => {
   const res = await fetch(
