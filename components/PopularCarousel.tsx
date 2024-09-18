@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -8,13 +8,14 @@ import 'swiper/css/pagination';
 import { usePathname } from 'next/navigation';
 import { Navigation, Pagination } from 'swiper/modules';
 
-const PopularCarousel = ({ products, shoes }: any) => {
+const PopularCarousel = ({ products = [], shoes = [] }: any) => {
   const pathname = usePathname();
   const currentItemId = pathname.split('/').pop();
 
+  // Ensure products and shoes are valid arrays
   const allItems = [
-    ...products.data.map((item: any) => ({ ...item, type: 'product' })),
-    ...shoes.data.map((item: any) => ({ ...item, type: 'shoe' })),
+    ...products.map((item: any) => ({ ...item, type: 'product' })),
+    ...shoes.map((item: any) => ({ ...item, type: 'shoe' })),
   ];
 
   const filteredItems = allItems.filter(
@@ -27,7 +28,7 @@ const PopularCarousel = ({ products, shoes }: any) => {
 
   return (
     <div className='py-20'>
-      <h2 className='mb-10'>Most popular accesories</h2>
+      <h2 className='mb-10'>Most popular accessories</h2>
       <Swiper
         modules={[Navigation, Pagination]}
         spaceBetween={50}
@@ -41,22 +42,28 @@ const PopularCarousel = ({ products, shoes }: any) => {
           1330: { slidesPerView: 4 },
         }}
       >
-        {filteredItems.map((item: any) => {
-          const image = item.attributes.image?.data?.[0]?.attributes?.url;
-          const imageShoes = item.attributes.image.data.attributes?.url
-          const imageURL = image ? `https://cars-app-cfm9.onrender.com${image}` : `https://cars-app-cfm9.onrender.com${imageShoes}`; // Provide a fallback image URL
-          return (
-            <SwiperSlide key={`${item.type}-${item.id}`}>
-              <div className="product-carousel-item text-center">
-                <Link className='table' href={`/${item.type}/${item.id}`}>
-                  <span className='product-category'>{item.attributes.category}</span>
-                  <Image className='popular-item' src={imageURL} fill alt={item.attributes.title} />
-                </Link>
-                <h4 className='font-bold my-5'>{item.attributes.title}</h4>
-              </div>
-            </SwiperSlide>
-          );
-        })}
+        {filteredItems.length > 0 ? (
+          filteredItems.map((item: any) => {
+            // Safely handle missing images
+            const image = item.attributes.image?.data?.[0]?.attributes?.url;
+            const imageShoes = item.attributes?.image?.data?.attributes?.url;
+            const imageURL = image ? `https://cars-app-cfm9.onrender.com${image}` : imageShoes ? `https://cars-app-cfm9.onrender.com${imageShoes}` : '/fallback-image.jpg'; // Fallback URL
+
+            return (
+              <SwiperSlide key={`${item.type}-${item.id}`}>
+                <div className="product-carousel-item text-center">
+                  <Link className='table' href={`/${item.type}/${item.id}`}>
+                    <span className='product-category'>{item.attributes.category}</span>
+                    <Image className='popular-item' src={imageURL} fill alt={item.attributes.title} />
+                  </Link>
+                  <h4 className='font-bold my-5'>{item.attributes.title}</h4>
+                </div>
+              </SwiperSlide>
+            );
+          })
+        ) : (
+          <p>No popular items available.</p>
+        )}
       </Swiper>
     </div>
   );

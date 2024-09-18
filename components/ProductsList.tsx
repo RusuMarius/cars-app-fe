@@ -7,20 +7,22 @@ interface AllProducts {
   shoes: any;
   cart: any;
   isUserAuthenticated: boolean;
-  userData: any
+  userData: any;
 }
 
 const ProductsList = ({ products, cart, isUserAuthenticated, userData }: Readonly<AllProducts>) => {
+  const productsData = products?.data || []; // Use fallback array if products is null or undefined
+  const cartData = cart?.data || [];
   return (
-    <section className="py-16 min-h-[90vh]">
-      <h1 className="mb-10">Our products</h1>
+    <section className='py-16 min-h-[90vh]'>
+      <h1 className='mb-10'>Our products</h1>
       <TabsComponent
-        products={products}
-        cart={cart}
+        products={productsData}
+        cart={cartData}
         isUserAuthenticated={isUserAuthenticated}
         userData={userData}
         shoes={undefined}
-        />
+      />
     </section>
   );
 };
