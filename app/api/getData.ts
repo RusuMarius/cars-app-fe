@@ -38,12 +38,32 @@ export const getProducts = async () => {
 }
 
 export const getCars = async (page: number) => {
-  const res = await fetch(`https://cars-app-cfm9.onrender.com/api/cars?populate=*&pagination[page]=${page}&pagination[pageSize]=9`, {
-    next: {
-      revalidate: 0,
-    },
-  });
-  return await res.json();
+  const res = await fetch(
+    `https://cars-app-cfm9.onrender.com/api/cars?populate=*&pagination[page]=${page}&pagination[pageSize]=9`,
+    {
+      next: { revalidate: 0 },
+    }
+  );
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch cars');
+  }
+
+  const data = await res.json();
+
+  if (!data || !data.meta || !data.meta.pagination) {
+    console.error('Pagination or data is missing');
+    return {
+      data: [],
+      meta: {
+        pagination: {
+          total: 0,
+        },
+      },
+    };
+  }
+
+  return data;
 };
 
 export const getShoes = async () => {
