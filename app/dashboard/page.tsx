@@ -28,15 +28,24 @@ const Dashboard = async () => {
       <h4 className='my-10'>Your Reservations</h4>
       <div className='reservations'>
         {reservations.data.length > 0 ? (
-          reservations.data.map((reservation: any) => (
-            <div className='reservation-dashboard' key={reservation.id}>
-              <p><span>{reservation.attributes.reservationDate}</span></p>
-              <p>For: <span>{reservation.attributes.car.data.attributes.title}</span></p>
-              <p>Dealer: <span>{reservation.dealer.data.attributes.title}</span></p>
-              <p>Contact: <span>0771583863</span></p>
-              <CancelReservation reservation={reservation} />
-            </div>
-          ))
+          reservations.data.map((reservation: any) => {
+            console.log('Reservation:', reservation); // Log each reservation
+
+            return (
+              <div className='reservation-dashboard' key={reservation.id}>
+                <p><span>{reservation.attributes.reservationDate}</span></p>
+                <p>For: <span>{reservation.attributes.car.data.attributes.title}</span></p>
+
+                {reservation.dealer?.data ? (
+                  <p>Dealer: <span>{reservation.dealer.data.attributes.title}</span></p>
+                ) : (
+                  <p><span>No dealer assigned</span></p>
+                )}
+                <p>Contact: <span>0771583863</span></p>
+                <CancelReservation reservation={reservation} />
+              </div>
+            );
+          })
         ) : (
           <p>You have no reservations.</p>
         )}
