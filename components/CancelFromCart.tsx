@@ -25,17 +25,17 @@ const CancelFromCart = ({ cart }: { cart: any }) => {
   const [loading, setLoading] = useState(false);
 
   const cancelFromCart = async (id: number) => {
-    setLoading(true); // Start loading state
+    setLoading(true); 
     await deleteData(`${mainUrl}/api/carts/${id}`);
-    router.refresh(); // Refresh after deletion is done
-    setLoading(false); // End loading state
+    router.refresh(); 
+    setLoading(false); 
   }
 
   return (
     <Button
       onClick={() => cancelFromCart(cart.id)}
       className="button"
-      disabled={loading} // Disable the button while loading
+      disabled={loading}
     >
       {loading ? 'Removing...' : '-'}
     </Button>

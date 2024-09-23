@@ -37,10 +37,10 @@ const AddMore = ({ cart }: { cart: any }) => {
     };
 
     try {
-      setLoading(true); // Start loading state
+      setLoading(true);
       await postData(`${mainUrl}/api/carts?populate=*`, data);
-      router.refresh(); // Refresh after deletion is done
-      setLoading(false); // End loading state
+      router.refresh();
+      setLoading(false);
     } catch (error) {
       console.error('Error adding one more item:', error);
     }

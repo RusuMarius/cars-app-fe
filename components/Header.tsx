@@ -5,7 +5,7 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { Button } from "./ui/button";
 import Dropdown from "./Dropdown";
 import Nav from "./Nav";
-import CartHeader from "./CartHeader"; // CartHeader remains client-side
+import CartHeader from "./CartHeader";
 import MobileNav from "./MobileNav";
 
 const Header = async () => {
@@ -27,7 +27,7 @@ const Header = async () => {
           {isUserAuthenticated ? (
             <>
               <div className="cart-header-box ml-4">
-                {/* Pass the user to the client-side CartHeader */}
+
                 <CartHeader user={user} />
               </div>
               <div>

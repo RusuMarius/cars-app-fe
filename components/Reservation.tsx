@@ -11,7 +11,7 @@ import Link from 'next/link';
 import AlertMessage from './AlertMessage';
 import Modal from './Modal';
 import { useRouter } from 'next/navigation';
-import { getDealers, getCarData, getReservationData } from '@/app/api/getData';
+import { getDealers, getCarData, getReservationData, mainUrl } from '@/app/api/getData';
 
 const postData = async (url: string, data: object) => {
   const options = {
@@ -167,7 +167,7 @@ const Reservation: React.FC<Readonly<AddToCartProps>> = ({ reservations, carId, 
     };
 
     try {
-      const response = await postData('${mainUrl}/api/reservations?populate=*', data);
+      const response = await postData(`${mainUrl}/api/reservations?populate=*`, data);
       if (response) {
         router.refresh();
         setDate(undefined);

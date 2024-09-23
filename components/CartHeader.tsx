@@ -27,18 +27,14 @@ const CartHeader = ({ user }: { user: any }) => {
   };
 
   useEffect(() => {
-    // Fetch cart data initially
     fetchCartProducts();
 
-    // Add event listener for cart updates
     const handleCartUpdate = () => {
-      fetchCartProducts(); // Re-fetch cart data when cart is updated
+      fetchCartProducts();
     };
 
-    // Listen for 'cartUpdated' events to refresh the cart
     window.addEventListener('cartUpdated', handleCartUpdate);
 
-    // Clean up event listener when component unmounts
     return () => {
       window.removeEventListener('cartUpdated', handleCartUpdate);
     };

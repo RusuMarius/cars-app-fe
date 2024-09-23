@@ -17,7 +17,6 @@ export const getReservationData = async () => {
   if (!res.ok) throw new Error('Failed to fetch reservations data');
   const reservationData = await res.json();
 
-  // Fetch dealer details for each reservation
   const reservationsWithDealers = await Promise.all(
     reservationData.data.map(async (reservation: any) => {
       const dealer = await getDealerById(reservation.attributes.dealer);
