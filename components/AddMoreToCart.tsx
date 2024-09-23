@@ -34,7 +34,7 @@ const AddMore = ({ cart }: { cart: any }) => {
     };
 
     try {
-      await postData('https://cars-app-cfm9.onrender.com/api/carts?populate=*', data);
+      await postData('http://127.0.0.1:1337/api/carts?populate=*', data);
       router.refresh();
     } catch (error) {
       console.error('Error adding one more item:', error);

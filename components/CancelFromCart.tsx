@@ -24,7 +24,7 @@ const deleteData = async (url: string) => {
 const CancelFromCart = ({cart}: {cart: any}) => {
   const router = useRouter()
   const cancelFromCart = (id: number) => {
-    deleteData(`https://cars-app-cfm9.onrender.com/api/carts/${id}`);
+    deleteData(`http://127.0.0.1:1337/api/carts/${id}`);
     router.refresh()
   }
   return (

@@ -47,8 +47,7 @@ const PopularCarousel = ({ products = [], shoes = [] }: any) => {
             // Safely handle missing images
             const image = item.attributes.image?.data?.[0]?.attributes?.url;
             const imageShoes = item.attributes?.image?.data?.attributes?.url;
-            const imageURL = image ? `https://cars-app-cfm9.onrender.com${image}` : imageShoes ? `https://cars-app-cfm9.onrender.com${imageShoes}` : '/fallback-image.jpg'; // Fallback URL
-
+            const imageURL = image ? `http://127.0.0.1:1337${image}` : `http://127.0.0.1:1337${imageShoes}`; // Fallback URL
             return (
               <SwiperSlide key={`${item.type}-${item.id}`}>
                 <div className="product-carousel-item text-center">
@@ -62,7 +61,7 @@ const PopularCarousel = ({ products = [], shoes = [] }: any) => {
             );
           })
         ) : (
-          <p>No popular items available.</p>
+          <div><p>No popular items available.</p></div>
         )}
       </Swiper>
     </div>

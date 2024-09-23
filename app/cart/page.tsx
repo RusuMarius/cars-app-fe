@@ -64,12 +64,6 @@ const Cart = async () => {
   const finalTotalPrice = totalPrice - totalPromotion + shopping;
   const productsPrice = totalPrice - totalPromotion;
 
-  const productsForCheckout = uniqueProducts.map((cart: any) => ({
-    title: cart.attributes.product.data?.attributes.title || cart.attributes.shoe.data?.attributes.title || 'Untitled',
-    imageUrl: cart.attributes.product.data?.attributes.imageUrl || cart.attributes.shoe.data?.attributes.imageUrl || '',
-    price: cart.attributes.product.data?.attributes.price || cart.attributes.shoe.data?.attributes.price || 0,
-    quantity: cart.quantity,
-  }));
 
   return (
     <section className="min-h-[80vh]">

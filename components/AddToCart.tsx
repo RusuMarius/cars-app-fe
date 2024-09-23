@@ -42,7 +42,7 @@ const AddToCart = ({product, isUserAuthenticated, userData}: Readonly<addToCartP
       }
     };
 
-    postData('https://cars-app-cfm9.onrender.com/api/carts?populate=*', data);
+    postData('http://127.0.0.1:1337/api/carts?populate=*', data);
     router.refresh();
   }
 

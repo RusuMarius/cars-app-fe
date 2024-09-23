@@ -1,6 +1,6 @@
 import { getCartData, getProducts } from "@/app/api/getData";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import TabsComponent from "./FilteredShoeList";
+import TabsComponent from "./FilteredProdList";
 
 
 interface AllShoes {
@@ -19,8 +19,7 @@ const ShoesList = ({shoes, cart, isUserAuthenticated, userData }: Readonly<AllSh
         shoes={shoes}
         cart={cart}
         isUserAuthenticated={isUserAuthenticated}
-        userData={userData}
-        />
+        userData={userData} products={undefined}        />
     </section>
   );
 };

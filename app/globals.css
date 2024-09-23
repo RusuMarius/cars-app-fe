@@ -28,14 +28,14 @@ button:not(.rdp-button):hover {
 .alert-modal-cta {
   border: 2px solid rgb(0, 0, 79);
 }
-.alert-modal-cta:last-of-type {
+.alert-modal-cta:first-of-type {
   background-color: rgb(0, 0, 79);
+  margin-right: 20px;
 
 }
-.alert-modal-cta:first-of-type {
+.alert-modal-cta:last-of-type {
   background-color: #fff;
   color: rgb(0, 0, 79);
-  margin-right: 20px;
 }
 .success-page {
   height: 80vh;
