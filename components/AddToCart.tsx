@@ -2,6 +2,7 @@
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { mainUrl } from "@/app/api/getData";
 
 const postData = async(url: string, data: object) => {
   const options = {
@@ -42,7 +43,7 @@ const AddToCart = ({product, isUserAuthenticated, userData}: Readonly<addToCartP
       }
     };
 
-    postData('https://cars-app-cfm9.onrender.com/api/carts?populate=*', data);
+    postData(`${mainUrl}/api/carts?populate=*`, data);
     router.refresh();
   }
 

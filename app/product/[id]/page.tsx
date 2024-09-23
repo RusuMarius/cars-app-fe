@@ -1,4 +1,4 @@
-import { getProdData } from "@/app/api/getData"
+import { getProdData, mainUrl } from "@/app/api/getData"
 import AddToCart from "@/components/AddToCart"
 import { getCartData } from "@/app/api/getData"
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button"
 const ProductDetails = async ({params}: {params: any}) => {
 
   const product = await getProdData({params})
-  const imgURL = `http://127.0.0.1:1337${product.data.attributes.image.data[0].attributes.url}`
+  const imgURL = `${mainUrl}${product.data.attributes.image.data[0].attributes.url}`
   const cart = getCartData()
   const {isAuthenticated, getUser} = getKindeServerSession()
   const isUserAuthenticated = await isAuthenticated()

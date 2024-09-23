@@ -7,6 +7,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { usePathname } from 'next/navigation';
 import { Navigation, Pagination } from 'swiper/modules';
+import { mainUrl } from '@/app/api/getData';
 
 const PopularCarousel = ({ products = [], shoes = [] }: any) => {
   const pathname = usePathname();
@@ -47,7 +48,7 @@ const PopularCarousel = ({ products = [], shoes = [] }: any) => {
             // Safely handle missing images
             const image = item.attributes.image?.data?.[0]?.attributes?.url;
             const imageShoes = item.attributes?.image?.data?.attributes?.url;
-            const imageURL = image ? `https://cars-app-cfm9.onrender.com${image}` : `https://cars-app-cfm9.onrender.com${imageShoes}`; // Fallback URL
+            const imageURL = image ? `${mainUrl}${image}` : `${mainUrl}${imageShoes}`; // Fallback URL
             return (
               <SwiperSlide key={`${item.type}-${item.id}`}>
                 <div className="product-carousel-item text-center">

@@ -1,5 +1,5 @@
 import AddToCart from "@/components/AddShoesToCart"
-import { getCartData, getShoeData } from "@/app/api/getData"
+import { getCartData, getShoeData, mainUrl } from "@/app/api/getData"
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
 import Image from "next/image"
 import Link from "next/link"
@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button"
 const ShoeDetails = async ({params}: {params: any}) => {
 
   const shoe = await getShoeData({params})
-  const imgURL = `https://cars-app-cfm9.onrender.com${shoe.data.attributes.image.data.attributes.url}`
+  const imgURL = `${mainUrl}${shoe.data.attributes.image.data.attributes.url}`
   const cart = getCartData()
   const {isAuthenticated, getUser} = getKindeServerSession()
   const isUserAuthenticated = await isAuthenticated()

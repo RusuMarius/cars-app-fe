@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation"
 import { TrashIcon } from '@heroicons/react/24/outline'
 import Modal from "./Modal"
 import { useState } from "react"
+import { mainUrl } from "@/app/api/getData"
 
 const deleteData = async (url: string) => {
   const options = {
@@ -24,7 +25,7 @@ const deleteData = async (url: string) => {
 const CancelReservation = ({ reservation }: { reservation: any }) => {
   const router = useRouter()
   const cancelReservation = (id: number) => {
-    deleteData(`https://cars-app-cfm9.onrender.com/api/reservations/${id}`);
+    deleteData(`${mainUrl}/api/reservations/${id}`);
     router.refresh();
     closeModal();  // Close the modal after deleting
   }

@@ -1,5 +1,7 @@
+export const mainUrl = 'https://cars-app-cfm9.onrender.com';
+
 export const getCartData = async () => {
-  const res = await fetch(`https://cars-app-cfm9.onrender.com/api/carts?populate=*`, {
+  const res = await fetch(`${mainUrl}/api/carts?populate=*`, {
     next: {
       revalidate: 0,
     }
@@ -8,7 +10,7 @@ export const getCartData = async () => {
 }
 
 export const getReservationData = async () => {
-  const res = await fetch(`https://cars-app-cfm9.onrender.com/api/reservations?populate=*`, {
+  const res = await fetch(`${mainUrl}/api/reservations?populate=*`, {
     next: { revalidate: 0 },
   });
   if (!res.ok) throw new Error('Failed to fetch reservations data');
@@ -29,7 +31,7 @@ export const getReservationData = async () => {
 };
 
 export const getProducts = async () => {
-  const res = await fetch(`https://cars-app-cfm9.onrender.com/api/products?populate=*`, {
+  const res = await fetch(`${mainUrl}/api/products?populate=*`, {
     next: {
       revalidate: 0,
     },
@@ -41,7 +43,7 @@ export const getProducts = async () => {
 };
 
 export const getCars = async (page: number) => {
-  const res = await fetch(`https://cars-app-cfm9.onrender.com/api/cars?populate=*&pagination[page]=${page}&pagination[pageSize]=9`, {
+  const res = await fetch(`${mainUrl}/api/cars?populate=*&pagination[page]=${page}&pagination[pageSize]=9`, {
     next: {
       revalidate: 0,
     },
@@ -50,7 +52,7 @@ export const getCars = async (page: number) => {
 };
 
 export const getShoes = async () => {
-  const res = await fetch(`https://cars-app-cfm9.onrender.com/api/shoes?populate=*`, {
+  const res = await fetch(`${mainUrl}/api/shoes?populate=*`, {
     next: {
       revalidate: 0,
     },
@@ -62,7 +64,7 @@ export const getShoes = async () => {
 }
 
 export const getDealers = async () => {
-  const res = await fetch(`https://cars-app-cfm9.onrender.com/api/dealers?populate=*`, {
+  const res = await fetch(`${mainUrl}/api/dealers?populate=*`, {
     next: {
       revalidate: 0,
     }
@@ -71,7 +73,7 @@ export const getDealers = async () => {
 }
 
 export const getDealerById = async (dealerId: string) => {
-  const res = await fetch(`https://cars-app-cfm9.onrender.com/api/dealers/${dealerId}?populate=*`, {
+  const res = await fetch(`${mainUrl}/api/dealers/${dealerId}?populate=*`, {
     next: { revalidate: 0 },
   });
   if (!res.ok) throw new Error('Failed to fetch dealer data');
@@ -79,7 +81,7 @@ export const getDealerById = async (dealerId: string) => {
 };
 
 export const getUserCartProducts = async () => {
-  const res = await fetch(`https://cars-app-cfm9.onrender.com/api/carts?populate=*`, {
+  const res = await fetch(`${mainUrl}/api/carts?populate=*`, {
     next: {
       revalidate: 0,
     },
@@ -88,7 +90,7 @@ export const getUserCartProducts = async () => {
 };
 
 export const getProdData = async ({params}: {params:any}) => {
-  const res = await fetch(`https://cars-app-cfm9.onrender.com/api/products/${params.id}?populate=*`, {
+  const res = await fetch(`${mainUrl}/api/products/${params.id}?populate=*`, {
     next: {
       revalidate: 0,
     }
@@ -97,7 +99,7 @@ export const getProdData = async ({params}: {params:any}) => {
 }
 
 export const getCarData = async (id: string) => {
-  const res = await fetch(`https://cars-app-cfm9.onrender.com/api/cars/${id}?populate=*`, {
+  const res = await fetch(`${mainUrl}/api/cars/${id}?populate=*`, {
     next: { revalidate: 0 },
   });
   if (!res.ok) throw new Error('Failed to fetch car data');
@@ -105,10 +107,11 @@ export const getCarData = async (id: string) => {
 };
 
 export const getShoeData = async ({params}: {params:any}) => {
-  const res = await fetch(`https://cars-app-cfm9.onrender.com/api/shoes/${params.id}?populate=*`, {
+  const res = await fetch(`${mainUrl}/api/shoes/${params.id}?populate=*`, {
     next: {
       revalidate: 0,
     }
   })
   return await res.json()
 }
+

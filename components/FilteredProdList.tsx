@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import AddToCart from "@/components/AddToCart";
+import { mainUrl } from "@/app/api/getData";
 
 const TabsComponent = ({ products, shoes, cart, isUserAuthenticated, userData }: {products: any; shoes: any; cart: any; isUserAuthenticated: boolean; userData: any}) => {
   const [productType, setProductType] = useState('all');
@@ -29,7 +30,7 @@ console.log(products?.data);
       </Tabs>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {filteredProducts.map((product: any) => {
-          const imageURL = `https://cars-app-cfm9.onrender.com${product.attributes.image.data[0].attributes.url}`;
+          const imageURL = `${mainUrl}${product.attributes.image.data[0].attributes.url}`;
 
           return (
             <div className="prod-item" key={product.id}>

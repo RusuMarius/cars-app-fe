@@ -1,4 +1,5 @@
 'use client'
+import { mainUrl } from "@/app/api/getData"
 import { Button } from "./ui/button"
 import { useRouter } from "next/navigation"
 
@@ -24,7 +25,7 @@ const deleteData = async (url: string) => {
 const CancelFromCart = ({cart}: {cart: any}) => {
   const router = useRouter()
   const cancelFromCart = (id: number) => {
-    deleteData(`https://cars-app-cfm9.onrender.com/api/carts/${id}`);
+    deleteData(`${mainUrl}/api/carts/${id}`);
     router.refresh()
   }
   return (
