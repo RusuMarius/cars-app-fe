@@ -27,7 +27,7 @@ const CancelReservation = ({ reservation }: { reservation: any }) => {
   const cancelReservation = (id: number) => {
     deleteData(`${mainUrl}/api/reservations/${id}`);
     router.refresh();
-    closeModal();  // Close the modal after deleting
+    closeModal();
   }
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
