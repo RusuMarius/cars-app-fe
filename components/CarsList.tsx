@@ -3,7 +3,7 @@
 
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { getCars } from '@/app/api/getData';
+import { getCars, mainUrl } from '@/app/api/getData';
 import { Button } from './ui/button';
 
 const CarsList = ({ initialCars, totalCars }: { initialCars: any; totalCars: number }) => {
@@ -27,7 +27,6 @@ const CarsList = ({ initialCars, totalCars }: { initialCars: any; totalCars: num
     setHasMore(carItems.length + newCars.data.length < totalCars);
     setLoading(false);
   };
-
   return (
     <div className='flex flex-wrap mb-20'>
       {carItems.map((carItem: any) => (
@@ -40,7 +39,7 @@ const CarsList = ({ initialCars, totalCars }: { initialCars: any; totalCars: num
           )}
           <div className='car-teaser-img mb-3 lg:h-[226px] md:h-[200px] flex justify-center items-end'>
             <Link href={`/car/${carItem.id}`}>
-              <img className='w-[90%]' src={carItem.attributes.imageUrl} alt={carItem.attributes.title} />
+              <img className='w-[90%]' src={`${mainUrl}${carItem.attributes.image.data[0].attributes.url}`} alt={carItem.attributes.title} />
             </Link>
           </div>
           <div>

@@ -73,11 +73,18 @@ export const getDealers = async () => {
 }
 
 export const getDealerById = async (dealerId: string) => {
-  const res = await fetch(`${mainUrl}/api/dealers/${dealerId}?populate=*`, {
-    next: { revalidate: 0 },
-  });
-  if (!res.ok) throw new Error('Failed to fetch dealer data');
-  return await res.json();
+  try {
+    const res = await fetch(`${mainUrl}/api/dealers/${dealerId}?populate=*`, {
+      next: { revalidate: 0 },
+    });
+    if (!res.ok) {
+      return null;
+    }
+    return await res.json();
+  } catch (error) {
+    console.error('Error fetching dealer:', error);
+    return null;
+  }
 };
 
 export const getUserCartProducts = async () => {
