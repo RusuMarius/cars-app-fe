@@ -57,7 +57,7 @@ button:not(.rdp-button):hover {
   justify-content: space-between;
   position: relative;
 }
-.reservation-dashboard .remove-reservation {
+.reservation-dashboard .remove-reservation-wrapper {
   position: absolute;
   right: 10px;
   transform: translateY(-50%);
@@ -639,5 +639,15 @@ header {
   }
   .chatbot {
     max-width: 320px;
+  }
+  .reservation-dashboard .remove-reservation-wrapper {
+    height: 100%;
+    background: red;
+    width: 45px;
+    right: 0;
+    position: absolute;
+    top: 50%;
+    color: #fff;
+    padding: 7px;
   }
 }

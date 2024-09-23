@@ -34,8 +34,8 @@ const CancelReservation = ({ reservation }: { reservation: any }) => {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <div className="remove-reservation-wrapper">
-      <TrashIcon className="w-6 h-6 remove-reservation" onClick={openModal} />
+    <div>
+      <TrashIcon className="w-6 h-6 remove-reservation remove-reservation-wrapper" onClick={openModal} />
 
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         <h4 className="mb-6">Are you sure?</h4>
