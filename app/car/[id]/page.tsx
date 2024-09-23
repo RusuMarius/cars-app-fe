@@ -18,7 +18,7 @@ const CarDetails = async ({ params }: { params: { id: string } }) => {
   const carData = {
     title: car.data.attributes.title,
     description: car.data.attributes.description,
-    imageUrl: `https://cars-app-cfm9.onrender.com${car.data.attributes.image.data[0].attributes.url}`,
+    imageUrl: `http://127.0.0.1:1337${car.data.attributes.image.data[0].attributes.url}`,
     price: car.data.attributes.price,
     dealerIds: car.data.attributes.dealers.data.map((dealer: any) => dealer.id),
   };

@@ -12,12 +12,11 @@ import { Button } from "@/components/ui/button"
 const ProductDetails = async ({params}: {params: any}) => {
 
   const product = await getProdData({params})
-  const imgURL = `https://cars-app-cfm9.onrender.com${product.data.attributes.image.data[0].attributes.url}`
+  const imgURL = `http://127.0.0.1:1337${product.data.attributes.image.data[0].attributes.url}`
   const cart = getCartData()
   const {isAuthenticated, getUser} = getKindeServerSession()
   const isUserAuthenticated = await isAuthenticated()
   const userData = await getUser()
-
 
 
   return (

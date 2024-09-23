@@ -32,10 +32,13 @@ export const getProducts = async () => {
   const res = await fetch(`https://cars-app-cfm9.onrender.com/api/products?populate=*`, {
     next: {
       revalidate: 0,
-    }
-  })
-  return await res.json()
-}
+    },
+  });
+
+  const products = await res.json();
+
+  return products;
+};
 
 export const getCars = async (page: number) => {
   const res = await fetch(`https://cars-app-cfm9.onrender.com/api/cars?populate=*&pagination[page]=${page}&pagination[pageSize]=9`, {
@@ -50,9 +53,12 @@ export const getShoes = async () => {
   const res = await fetch(`https://cars-app-cfm9.onrender.com/api/shoes?populate=*`, {
     next: {
       revalidate: 0,
-    }
-  })
-  return await res.json()
+    },
+  });
+
+  const shoes = await res.json();
+
+  return shoes;
 }
 
 export const getDealers = async () => {

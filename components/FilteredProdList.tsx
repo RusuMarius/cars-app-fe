@@ -7,16 +7,17 @@ import AddToCart from "@/components/AddToCart";
 
 const TabsComponent = ({ products, shoes, cart, isUserAuthenticated, userData }: {products: any; shoes: any; cart: any; isUserAuthenticated: boolean; userData: any}) => {
   const [productType, setProductType] = useState('all');
-  const [filteredProducts, setFilteredProducts] = useState(products.data);
-
+  const [filteredProducts, setFilteredProducts] = useState(products?.data || []);
 
   useEffect(() => {
-    const filtered = products.data?.filter((product: any) => {
-      return productType === 'all' ? product : productType === product.attributes.type;
-    });
-    setFilteredProducts(filtered);
+    if (products?.data) {
+      const filtered = products.data.filter((product: any) => {
+        return productType === 'all' ? product : productType === product.attributes.type;
+      });
+      setFilteredProducts(filtered);
+    }
   }, [productType, products]);
-
+console.log(products?.data);
   return (
     <>
       <Tabs defaultValue="all" className="tabs-component mb-10">
@@ -41,22 +42,27 @@ const TabsComponent = ({ products, shoes, cart, isUserAuthenticated, userData }:
               <h3 className="font-bold">{product.attributes.title}</h3>
               <p className="description">{product.attributes.description}</p>
               <div className="flex justify-between items-center">
-
                 <div>
                   {product.attributes.promotion ? (
                     <>
-                    <p className="text-base"><span className="old-price">${product.attributes.price}</span> <span className="text-gray-400">-{product.attributes.promotion}%</span></p>
-                    <p className="text-red-600 font-bold">${product.attributes.price - (product.attributes.price * (product.attributes.promotion / 100))}</p>
+                      <p className="text-base">
+                        <span className="old-price">${product.attributes.price}</span>
+                        <span className="text-gray-400">-{product.attributes.promotion}%</span>
+                      </p>
+                      <p className="text-red-600 font-bold">
+                        ${product.attributes.price - (product.attributes.price * (product.attributes.promotion / 100))}
+                      </p>
                     </>
-                  ) : (<p className="text-red-600 font-bold">${product.attributes.price}</p>)}
-
+                  ) : (
+                    <p className="text-red-600 font-bold">${product.attributes.price}</p>
+                  )}
                 </div>
                 <AddToCart
                   product={product}
                   cart={cart}
                   isUserAuthenticated={isUserAuthenticated}
                   userData={userData}
-                  />
+                />
               </div>
             </div>
           );
@@ -67,3 +73,4 @@ const TabsComponent = ({ products, shoes, cart, isUserAuthenticated, userData }:
 };
 
 export default TabsComponent;
+
