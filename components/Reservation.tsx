@@ -167,7 +167,7 @@ const Reservation: React.FC<Readonly<AddToCartProps>> = ({ reservations, carId, 
     };
 
     try {
-      const response = await postData('http://127.0.0.1:1337/api/reservations?populate=*', data);
+      const response = await postData('https://cars-app-cfm9.onrender.com/api/reservations?populate=*', data);
       if (response) {
         router.refresh();
         setDate(undefined);

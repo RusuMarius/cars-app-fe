@@ -28,7 +28,7 @@ const TabsComponent = ({ products, shoes, cart, isUserAuthenticated, userData }:
       </Tabs>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {filteredProducts.map((product: any) => {
-          const imageURL = `http://127.0.0.1:1337${product.attributes.image.data[0].attributes.url}`;
+          const imageURL = `https://cars-app-cfm9.onrender.com${product.attributes.image.data[0].attributes.url}`;
 
           return (
             <div className="prod-item" key={product.id}>
