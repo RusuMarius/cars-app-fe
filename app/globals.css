@@ -52,7 +52,7 @@ button:not(.rdp-button):hover {
 }
 .reservation-dashboard {
   border-bottom: 1px solid rgb(205, 205, 205);
-  padding: 20px 45px 20px 20px;
+  padding: 20px 50px 20px 20px;
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -239,6 +239,7 @@ footer {
 .content-product .product-big-image {
   position: relative !important;
   width: 300px!important;
+  display: block;
 }
 
 .content-car .car-big-image {

@@ -23,14 +23,12 @@ const ProductDetails = async ({params}: {params: any}) => {
     <div className="container overflow-hidden">
       <Link className="mb-10 mt-10 table" href="/clothes"><Button>Back to product list</Button></Link>
       <div className="content-product flex flex-col md:flex-row my-20 w-[100%] items-center text-center md:items-left md:text-left">
-        <div>
-          <Image className="max-w-2xl w-full relative product-big-image" fill src={imgURL} alt={""} />
-        </div>
+
+          <Image className="max-w-2xl w-full relative product-big-image" width={300} height={300} src={imgURL} alt={""} />
+
         <div className="md:ml-10 max-w-[600px]">
           <div>
-            <div>
-              <h2>{product.data?.attributes.title}</h2>
-            </div>
+            <h2>{product.data?.attributes.title}</h2>
           </div>
           <p className="my-5">This product is for <span className="text-red-600 font-bold">{product.data?.attributes.type}</span></p>
           <p>{product.data?.attributes.description}</p>
