@@ -18,7 +18,7 @@ const TabsComponent = ({ products, shoes, cart, isUserAuthenticated, userData }:
       setFilteredProducts(filtered);
     }
   }, [productType, products]);
-console.log(products?.data);
+
   return (
     <>
       <Tabs defaultValue="all" className="tabs-component mb-10">

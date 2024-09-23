@@ -1,4 +1,5 @@
 export const mainUrl = 'https://cars-app-cfm9.onrender.com';
+// export const mainUrl = 'http://127.0.0.1:1337';
 
 export const getCartData = async () => {
   const res = await fetch(`${mainUrl}/api/carts?populate=*`, {

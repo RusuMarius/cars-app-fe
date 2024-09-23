@@ -22,7 +22,7 @@ const postData = async (url: string, data: object) => {
     body: JSON.stringify(data),
   }
   try {
-    console.log("Sending data:", data);
+
     const res = await fetch(url, options)
     if (!res.ok) {
       console.error(`HTTP error! status: ${res.status}`);
