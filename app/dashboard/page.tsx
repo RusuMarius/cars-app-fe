@@ -1,13 +1,13 @@
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 import React from 'react';
-import { getReservationData } from '../api/getData';
+import { getUserReservationData } from '../api/getData';
 import Image from 'next/image';
 import CancelReservation from '@/components/CancelReservation';
 
 const Dashboard = async () => {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
-  const reservations = await getReservationData(); // Fetch reservations with dealers
+  const reservations = await getUserReservationData(user?.email);
 
   return (
     <div className='container'>

@@ -45,7 +45,7 @@ interface AddToCartProps {
   userData: any;
 }
 
-const Reservation: React.FC<Readonly<AddToCartProps>> = ({ reservations, carId, isUserAuthenticated, userData }) => {
+const Reservation = ({ reservations, carId, isUserAuthenticated, userData }: Readonly<AddToCartProps>) => {
   const [date, setDate] = React.useState<Date>();
   const [alertMessage, setAlertMessage] = useState<{message: string; type: 'error' | 'success' | null;} | null>(null);
   const [dealers, setDealers] = useState<any[]>([]);
@@ -56,6 +56,10 @@ const Reservation: React.FC<Readonly<AddToCartProps>> = ({ reservations, carId, 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
   const formatDateForStrapi = (date: Date) => format(date, 'yyyy-MM-dd');
+
+
+
+
 
   useEffect(() => {
     const fetchDealersAndCarData = async () => {
@@ -82,6 +86,7 @@ const Reservation: React.FC<Readonly<AddToCartProps>> = ({ reservations, carId, 
   useEffect(() => {
     const timer = setTimeout(() => {
       setAlertMessage(null);
+      router.refresh();
     }, 3000);
     return () => clearTimeout(timer);
   }, [alertMessage]);
@@ -157,9 +162,9 @@ const Reservation: React.FC<Readonly<AddToCartProps>> = ({ reservations, carId, 
 
     const data = {
       data: {
-        lastname: userData.given_name,
-        firstname: userData.family_name,
-        email: userData?.email,
+        lastname: userData?.given_name || '',
+        firstname: userData?.family_name || '',
+        email: userData?.email || '',
         reservationDate: date ? formatDateForStrapi(date) : null,
         car: carId,
         dealer: selectedDealer,
@@ -168,8 +173,10 @@ const Reservation: React.FC<Readonly<AddToCartProps>> = ({ reservations, carId, 
 
     try {
       const response = await postData(`${mainUrl}/api/reservations?populate=*`, data);
+      if (!response) {
+        console.error("Error response from Strapi:", response);
+      }
       if (response) {
-        router.refresh();
         setDate(undefined);
         setSelectedDealer(null);
         closeModal();
@@ -182,7 +189,6 @@ const Reservation: React.FC<Readonly<AddToCartProps>> = ({ reservations, carId, 
       });
     }
   }
-
 
   return (
     <div className='container'>

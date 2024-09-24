@@ -76,7 +76,7 @@ const Cart = async () => {
               <div>
                 <Image className="mx-auto mb-5" src={img} width={200} height={200} alt="" />
                 <p className="mb-5">You don&apos;t have any products.</p>
-                <Link href="/products">
+                <Link href="/clothes">
                   <Button>Back to products</Button>
                 </Link>
               </div>

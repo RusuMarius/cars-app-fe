@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button"
 const ProductDetails = async ({params}: {params: any}) => {
 
   const product = await getProdData({params})
-  const imgURL = `${mainUrl}${product.data.attributes.image.data[0].attributes.url}`
+  const imgURL = product.data.attributes.imageUrl
   const cart = getCartData()
   const {isAuthenticated, getUser} = getKindeServerSession()
   const isUserAuthenticated = await isAuthenticated()

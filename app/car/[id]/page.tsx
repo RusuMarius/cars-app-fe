@@ -18,10 +18,12 @@ const CarDetails = async ({ params }: { params: { id: string } }) => {
   const carData = {
     title: car.data.attributes.title,
     description: car.data.attributes.description,
-    imageUrl: `${mainUrl}${car.data.attributes.image.data[0].attributes.url}`,
+    imageUrl: car.data.attributes.imageUrl,
     price: car.data.attributes.price,
     dealerIds: car.data.attributes.dealers.data.map((dealer: any) => dealer.id),
   };
+
+
   return (
     <>
       <div className='container'>
@@ -33,7 +35,7 @@ const CarDetails = async ({ params }: { params: { id: string } }) => {
       {carData.dealerIds.length > 0 && (
         <Reservation
           reservations={reservations}
-          carId={car.data.id} // Pass carId here
+          carId={car.data.id}
           isUserAuthenticated={isUserAuthenticated}
           userData={userData}
         />

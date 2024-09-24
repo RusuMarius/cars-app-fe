@@ -1,5 +1,5 @@
-export const mainUrl = 'https://cars-app-cfm9.onrender.com';
-// export const mainUrl = 'http://127.0.0.1:1337';
+// export const mainUrl = 'https://cars-app-cfm9.onrender.com';
+export const mainUrl = 'http://127.0.0.1:1337';
 
 export const getCartData = async () => {
   const res = await fetch(`${mainUrl}/api/carts?populate=*`, {
@@ -29,6 +29,15 @@ export const getReservationData = async () => {
 
   return { data: reservationsWithDealers };
 };
+
+export const getUserReservationData = async (userEmail: any) => {
+  const res = await fetch(`${mainUrl}/api/reservations?[filters][email][$eq]=${userEmail}&populate=*`, {
+    next: {
+      revalidate: 0,
+    },
+  });
+  return await res.json();
+}
 
 export const getProducts = async () => {
   const res = await fetch(`${mainUrl}/api/products?populate=*`, {

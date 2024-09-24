@@ -30,7 +30,6 @@ const TabsShoesComponent = ({ shoes, cart, isUserAuthenticated, userData }: {sho
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {filteredShoes.map((shoe: any) => {
           const imageURL = `${mainUrl}${shoe.attributes.image.data.attributes.url}`;
-          console.log(shoe.attributes.imageUrl);
           return (
             <div className="prod-item flex flex-col" key={shoe.id}>
               <span className='product-category'>{shoe.attributes.category}</span>
