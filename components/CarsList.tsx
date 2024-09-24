@@ -29,25 +29,29 @@ const CarsList = ({ initialCars, totalCars }: { initialCars: any; totalCars: num
   };
   return (
     <div className='flex flex-wrap mb-20'>
-      {carItems.map((carItem: any) => (
-        <div key={carItem.id} className='md:w-[50%] lg:w-[33.3%] p-4 text-center relative hover:shadow-xl transition-shadow'>
+      {carItems.map((carItem: any) => {
+        const imageURL = `${mainUrl}${carItem.attributes.image.data[0].attributes.url}`;
+        console.log(imageURL);
+        return (
+          <div key={carItem.id} className='md:w-[50%] lg:w-[33.3%] p-4 text-center relative hover:shadow-xl transition-shadow'>
 
-          {!carItem.attributes.dealers.data.length && (
-            <div className='not-available-flag absolute bg-red-600 text-white px-2 py-1 text-xs font-bold'>
-              Not Available
+            {!carItem.attributes.dealers.data.length && (
+              <div className='not-available-flag absolute bg-red-600 text-white px-2 py-1 text-xs font-bold'>
+                Not Available
+              </div>
+            )}
+            <div className='car-teaser-img mb-3 lg:h-[226px] md:h-[200px] flex justify-center items-end'>
+              <Link href={`/car/${carItem.id}`}>
+                <img className='w-[90%]' src={imageURL} alt={carItem.attributes.title} />
+              </Link>
             </div>
-          )}
-          <div className='car-teaser-img mb-3 lg:h-[226px] md:h-[200px] flex justify-center items-end'>
-            <Link href={`/car/${carItem.id}`}>
-              <img className='w-[90%]' src={`${mainUrl}${carItem.attributes.image.data[0].attributes.url}`} alt={carItem.attributes.title} />
-            </Link>
+            <div>
+              <h3>{carItem.attributes.title}</h3>
+              <p className='teaser-description text-gray-500'>{carItem.attributes.description}</p>
+            </div>
           </div>
-          <div>
-            <h3>{carItem.attributes.title}</h3>
-            <p className='teaser-description text-gray-500'>{carItem.attributes.description}</p>
-          </div>
-        </div>
-      ))}
+        )
+      })}
       {hasMore && (
         <div className='w-full text-center my-6'>
           <Button
