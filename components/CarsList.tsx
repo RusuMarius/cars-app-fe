@@ -31,7 +31,6 @@ const CarsList = ({ initialCars, totalCars }: { initialCars: any; totalCars: num
     <div className='flex flex-wrap mb-20'>
       {carItems.map((carItem: any) => {
         const imageURL = `${mainUrl}${carItem.attributes.image.data[0].attributes.url}`;
-        console.log(imageURL);
         return (
           <div key={carItem.id} className='md:w-[50%] lg:w-[33.3%] p-4 text-center relative hover:shadow-xl transition-shadow'>
 
@@ -42,7 +41,7 @@ const CarsList = ({ initialCars, totalCars }: { initialCars: any; totalCars: num
             )}
             <div className='car-teaser-img mb-3 lg:h-[226px] md:h-[200px] flex justify-center items-end'>
               <Link href={`/car/${carItem.id}`}>
-                <img className='w-[90%]' src={imageURL} alt={carItem.attributes.title} />
+                <img className='w-[90%]' src={carItem.attributes.imageUrl} alt={carItem.attributes.title} />
               </Link>
             </div>
             <div>

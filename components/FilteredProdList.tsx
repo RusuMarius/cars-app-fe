@@ -31,7 +31,6 @@ const TabsComponent = ({ products, shoes, cart, isUserAuthenticated, userData }:
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {filteredProducts.map((product: any) => {
           const imageURL = `${mainUrl}${product.attributes.image.data[0].attributes.url}`;
-          console.log(imageURL);
           return (
             <div className="prod-item" key={product.id}>
               <span className='product-category'>{product.attributes.category}</span>

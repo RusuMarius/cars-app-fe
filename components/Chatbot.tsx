@@ -50,7 +50,7 @@ const Chatbot = () => {
 
       if (results.length > 0) {
         botMessageContent = `I found the following results for "${searchQuery}":<br>${results
-          .map((r: any) => `${r.type}: <a href="https://cars-app-fe.vercel.app${r.link}" target="_blank">${r.title}</a>`)
+          .map((r: any) => `${r.type}: <a href="http://localhost:3000${r.link}" target="_blank">${r.title}</a>`)
           .join('<br>')}`;  // Format as HTML with clickable links
       } else {
         botMessageContent = `Sorry, I couldn't find anything for "${searchQuery}".`;
