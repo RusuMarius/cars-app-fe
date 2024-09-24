@@ -23,7 +23,6 @@ const CarDetails = async ({ params }: { params: { id: string } }) => {
     dealerIds: car.data.attributes.dealers.data.map((dealer: any) => dealer.id),
   };
 
-
   return (
     <>
       <div className='container'>
