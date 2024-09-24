@@ -1,10 +1,11 @@
-'use client'
-import { Button } from "./ui/button"
-import { useRouter } from "next/navigation"
-import { TrashIcon } from '@heroicons/react/24/outline'
-import Modal from "./Modal"
-import { useState } from "react"
-import { mainUrl } from "@/app/api/getData"
+'use client';
+
+import { Button } from "./ui/button";
+import { useRouter } from "next/navigation";
+import { TrashIcon } from '@heroicons/react/24/outline';
+import Modal from "./Modal";
+import { useState } from "react";
+import { mainUrl } from "@/app/api/getData";
 
 const deleteData = async (url: string) => {
   const options = {
@@ -12,26 +13,35 @@ const deleteData = async (url: string) => {
     headers: {
       'Content-type': 'application/json',
     }
-  }
+  };
   try {
     const res = await fetch(url, options);
-    const data = await res.json()
-    return data;
+    if (res.ok) {
+      return true;
+    } else {
+      console.error('Error deleting reservation:', res.statusText);
+      return false;
+    }
   } catch (error) {
-    console.log(error);
+    console.error('Network error:', error);
+    return false;
   }
 }
 
 const CancelReservation = ({ reservation }: { reservation: any }) => {
-  const router = useRouter()
-  const cancelReservation = (id: number) => {
-    deleteData(`${mainUrl}/api/reservations/${id}`);
-    router.refresh();
-    closeModal();
-  }
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const router = useRouter();
+
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  const cancelReservation = async (id: number) => {
+    const success = await deleteData(`${mainUrl}/api/reservations/${id}`);
+    if (success) {
+      closeModal();
+      router.refresh(); // Refresh the page to reflect the updated reservation list
+    }
+  }
 
   return (
     <div>
