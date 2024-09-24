@@ -49,6 +49,8 @@ button:not(.rdp-button):hover {
   text-decoration: underline;
   text-underline-offset: -45%;
   text-decoration-skip-ink: none;
+  text-decoration-line: line-through;
+  -webkit-text-decoration-line: line-through;
 }
 .reservation-dashboard {
   border-bottom: 1px solid rgb(205, 205, 205);
