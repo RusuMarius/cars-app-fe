@@ -36,7 +36,7 @@ const TabsComponent = ({ products, shoes, cart, isUserAuthenticated, userData }:
               <span className='product-category'>{product.attributes.category}</span>
               <Link href={`/product/${product.id}`}>
                 <div className="relative w-full h-[250px] overflow-hidden mb-6 image-box">
-                  <Image className="object-contain prod-teaser" src={imageURL} fill priority alt={product.attributes.title} />
+                  <Image className="object-contain prod-teaser" src={product.attributes.imageUrl} fill priority alt={product.attributes.title} />
                 </div>
               </Link>
               <h3 className="font-bold">{product.attributes.title}</h3>

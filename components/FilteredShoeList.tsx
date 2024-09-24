@@ -30,12 +30,13 @@ const TabsShoesComponent = ({ shoes, cart, isUserAuthenticated, userData }: {sho
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {filteredShoes.map((shoe: any) => {
           const imageURL = `${mainUrl}${shoe.attributes.image.data.attributes.url}`;
+          console.log(shoe.attributes.imageUrl);
           return (
             <div className="prod-item flex flex-col" key={shoe.id}>
               <span className='product-category'>{shoe.attributes.category}</span>
               <Link href={`/shoe/${shoe.id}`}>
                 <div className="relative w-full h-[250px] overflow-hidden mb-6 image-box">
-                  <Image className="object-contain prod-teaser" src={imageURL} fill priority alt={shoe.attributes.title} />
+                  <Image className="object-contain prod-teaser" src={shoe.attributes.imageUrl} fill priority alt={shoe.attributes.title} />
                 </div>
               </Link>
               <h3 className="font-bold">{shoe.attributes.title}</h3>
