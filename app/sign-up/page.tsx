@@ -1,9 +1,10 @@
 'use client'
 import { useState } from "react";
 import styles from "../page.module.css";
-import {RegisterLink} from "@kinde-oss/kinde-auth-nextjs/components";
+import {LoginLink, RegisterLink} from "@kinde-oss/kinde-auth-nextjs/components";
 import EmailInput from "@/components/email";
 import Link from "next/link";
+import { FaFacebook, FaGoogle } from "react-icons/fa";
 
 const AuthPage: React.FC = () => {
   const [firstName, setFirstName] = useState("");
@@ -41,6 +42,26 @@ const AuthPage: React.FC = () => {
 
                     {/* Use the client component for email input */}
                     <EmailInput />
+                    <div className="flex items-center justify-center">
+                      <LoginLink
+                        className={styles.googleButton}
+                        authUrlParams={{
+                          connection_id: process.env.NEXT_PUBLIC_KINDE_CONNECTION_GOOGLE || ""
+                        }}
+                      >
+                        <FaGoogle className={styles.googleIcon} />
+
+                      </LoginLink>
+                      <LoginLink
+                        className={styles.googleButton}
+                        authUrlParams={{
+                          connection_id: process.env.NEXT_PUBLIC_KINDE_CONNECTION_EMAIL_FACEBOOK || ""
+                        }}
+                      >
+                        <FaFacebook className={styles.googleIcon} />
+
+                      </LoginLink>
+                    </div>
                 </div>
                 <div className={styles.footer}>
                     <span>
