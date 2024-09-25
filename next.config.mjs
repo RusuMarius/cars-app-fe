@@ -16,6 +16,10 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'cars-app-production.up.railway.app',
+      },
+      {
+        protocol: 'https',
         hostname: 'cars-app-cfm9.onrender.com',
       },
       {

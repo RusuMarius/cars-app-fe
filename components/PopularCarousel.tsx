@@ -46,9 +46,10 @@ const PopularCarousel = ({ products = [], shoes = [] }: any) => {
         {filteredItems.length > 0 ? (
           filteredItems.map((item: any) => {
             // Safely handle missing images
-            const image = item.attributes.image?.data?.[0]?.attributes?.url;
-            const imageShoes = item.attributes?.image?.data?.attributes?.url;
-            const imageURL = image ? `${mainUrl}${image}` : `${mainUrl}${imageShoes}`; // Fallback URL
+            const image = item.attributes.imageUrl;
+            const imageShoes = item.attributes?.imageUrl;
+            const imageURL = image ? `${image}` : `${imageShoes}`; // Fallback URL
+
             return (
               <SwiperSlide key={`${item.type}-${item.id}`}>
                 <div className="product-carousel-item text-center">
