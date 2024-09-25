@@ -28,7 +28,7 @@ const Footer = () => {
         </div>
       </div>
       <div className='container pt-5 pb-10'>
-        <p className='text-white text-xs'>© 2024. Mercedes-Benz România S.R.L. Toate drepturile rezervate.</p><br />
+        <p className='text-white text-xs'>© 2024. Prime Drive România S.R.L. Toate drepturile rezervate.</p><br />
         <p className='text-white text-xs'>Sistemele noastre de asistență pentru șofer și de siguranță sunt dispozitive auxiliare și nu te exonerează de responsabilitatea ca șofer. Te rugăm să respecți instrucțiunile din manualul de utilizare și limitele sistemului descrise acolo.<br /></p>
 
         </div>

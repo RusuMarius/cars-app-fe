@@ -22,7 +22,7 @@ const Dropdown = async ({user}: {user: any}) => {
         </DropdownMenuTrigger>
 
         <DropdownMenuContent>
-          <DropdownMenuLabel><Link href='/dashboard'>My Account</Link></DropdownMenuLabel>
+          <DropdownMenuLabel><Link href='/dashboard'>Dashboard</Link></DropdownMenuLabel>
 
           <DropdownMenuSeparator />
 

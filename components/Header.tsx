@@ -7,6 +7,9 @@ import Dropdown from "./Dropdown";
 import Nav from "./Nav";
 import CartHeader from "./CartHeader";
 import MobileNav from "./MobileNav";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { FaUser } from 'react-icons/fa';
+
 
 const Header = async () => {
   const { isAuthenticated, getUser } = getKindeServerSession();
@@ -36,12 +39,30 @@ const Header = async () => {
             </>
           ) : (
             <div className="flex gap-2 ml-4 login-wrapper">
-              <Link className="btn btn-ghost sign-in-btn" href="/sign-in">
-                <Button className="sign-in-button">Sign in</Button>
-              </Link>
-              <Link className="btn btn-ghost sign-in-btn" href="/sign-up">
-                <Button>Register</Button>
-              </Link>
+
+
+
+
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <div className="connection-wrapper"><FaUser /></div>
+                </DropdownMenuTrigger>
+
+                <DropdownMenuContent>
+                  <DropdownMenuLabel><Link href='/dashboard'>Autentication</Link></DropdownMenuLabel>
+
+                  <DropdownMenuSeparator />
+
+                  <div className='flex gap-2 items-center'>
+                    <Link className="btn btn-ghost sign-in-btn" href="/sign-in">
+                      <Button className="sign-in-button">Sign in</Button>
+                    </Link>
+                    <Link className="btn btn-ghost sign-in-btn" href="/sign-up">
+                      <Button>Register</Button>
+                    </Link>
+                  </div>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           )}
         </>
