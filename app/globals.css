@@ -609,6 +609,9 @@ header {
   .reservation-dashboard p:last-of-type {
     width: 50%;
   }
+  .login-wrapper {
+    margin-left: auto;
+  }
 }
 
 @media (max-width: 600px) {
