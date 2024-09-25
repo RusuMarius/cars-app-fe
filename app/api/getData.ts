@@ -1,4 +1,4 @@
-export const mainUrl = 'https://cars-app-cfm9.onrender.com';
+export const mainUrl = 'https://cars-app-production.up.railway.app';
 // export const mainUrl = 'http://127.0.0.1:1337';
 
 export const getCartData = async () => {
