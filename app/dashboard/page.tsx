@@ -11,7 +11,7 @@ const Dashboard = async () => {
 
   return (
     <div className='container'>
-      <div className='flex py-5'>
+      <div className='flex py-5 items-center'>
         <div className='rounded-xl overflow-hidden'>
           {user?.picture ? (
             <Image src={user.picture} alt="User profile" width={100} height={100} />
@@ -21,10 +21,10 @@ const Dashboard = async () => {
         </div>
         <div className='p-2'>
           <h2>{user?.family_name} {user?.given_name}</h2>
-          <p>{user?.email}</p>
+          <p className='text-base'>{user?.email}</p>
         </div>
       </div>
-      <h4 className='my-10'>Your Reservations</h4>
+      <h3 className='my-10 font-bold'>Your Reservations</h3>
       <div className='reservations'>
         {reservations.data.length > 0 ? (
           reservations.data.map((reservation: any) => {
