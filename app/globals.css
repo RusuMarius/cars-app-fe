@@ -240,6 +240,8 @@ footer {
   position: relative !important;
   object-fit: contain;
   min-height: 200px;
+  max-width: 85%;
+  margin: auto;
 }
 
 .content-product .product-big-image {
