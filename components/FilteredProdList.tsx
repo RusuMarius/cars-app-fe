@@ -41,7 +41,7 @@ const TabsComponent = ({ products, shoes, cart, isUserAuthenticated, userData }:
               </Link>
               <h3 className="font-bold">{product.attributes.title}</h3>
               <p className="description">{product.attributes.description}</p>
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between items-center mt-auto">
                 <div>
                   {product.attributes.promotion ? (
                     <>
