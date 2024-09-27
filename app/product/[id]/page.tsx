@@ -18,7 +18,6 @@ const ProductDetails = async ({params}: {params: any}) => {
   const isUserAuthenticated = await isAuthenticated()
   const userData = await getUser()
 
-
   return (
     <div className="container overflow-hidden">
       <Link className="mb-10 mt-10 table" href="/clothes"><Button>Back to product list</Button></Link>
