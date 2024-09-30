@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import './styles/globals.scss'
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Chatbot from "@/components/Chatbot"; // Import the Chatbot
+import Chatbot from "@/components/Chatbot";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +24,7 @@ export default function RootLayout({
         <Header />
         <div className="min-h-[80vh] mt-[64px]">{children}</div>
         <Footer />
-        <Chatbot /> {/* Include the Chatbot component */}
+        <Chatbot />
       </body>
     </html>
   );

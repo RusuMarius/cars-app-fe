@@ -32,7 +32,7 @@ const MobileNav = () => {
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
-      <SheetTrigger className="flex items-center">
+      <SheetTrigger className="flex items-center burger">
         <FaBars />
       </SheetTrigger>
       <SheetContent side="left" className="flex justify-center items-center">
