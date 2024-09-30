@@ -16,7 +16,7 @@ const ShoesList = ({ shoes, cart, isUserAuthenticated, userData }: Readonly<AllS
 
   return (
     <section className="py-16 min-h-[90vh]">
-      <h1 className="mb-10">Our shoes</h1>
+      <h1 className="mb-10 font-bold">Our shoes</h1>
       <TabsComponent
         shoes={shoes}
         cart={cart}

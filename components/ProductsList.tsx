@@ -17,7 +17,7 @@ const ProductsList = ({ products, cart, isUserAuthenticated, userData }: Readonl
 
   return (
     <section className="py-16 min-h-[90vh]">
-      <h1 className="mb-10">Our products</h1>
+      <h1 className="mb-10 font-bold">Our products</h1>
       <TabsComponent
         products={products}
         cart={cart}

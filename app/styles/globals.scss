@@ -58,11 +58,6 @@ button {
 }
 
 
-
-
-
-
-
 .infinite-scroll-component {
   position: relative;
 }
@@ -72,7 +67,6 @@ button {
     border: none;
   }
 }
-
 .alert-modal-cta {
   border: 2px solid rgb(0, 0, 79);
   &:first-of-type {
@@ -117,11 +111,9 @@ button {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
-
 .total-price {
   margin-top: auto;
 }
-
 footer {
   background: radial-gradient(circle, rgba(0,52,119,1) 0%, rgba(0,26,59,1) 100%);
   @media (max-width: 600px) {
@@ -139,7 +131,6 @@ header {
   left: 0;
   top: 0;
 }
-
 .not-available-flag {
   left: 30px;
   top: 50px;
