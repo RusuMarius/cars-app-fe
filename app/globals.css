@@ -244,6 +244,10 @@ footer {
   margin: auto;
 }
 
+.swiper .swiper-button-next.swiper-button-disabled, .swiper .swiper-button-prev.swiper-button-disabled {
+  pointer-events: all;
+}
+
 .content-product .product-big-image {
   position: relative !important;
   width: 300px!important;
