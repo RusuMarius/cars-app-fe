@@ -680,7 +680,7 @@ header {
   }
   .reservation-dashboard .remove-reservation-wrapper {
     height: 100%;
-    background: red;
+    background: #001d42;
     width: 45px;
     right: 0;
     position: absolute;
